@@ -11,4 +11,4 @@ Note: may require some tweaking to get the fonts correct.
 
 
 ![embrace literal plasticity](elp.png)
-![legalize recreational plutonium](LRP.png)
+![legalize recreational plutonium](lrp.png)
