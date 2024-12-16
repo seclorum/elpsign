@@ -38,7 +38,7 @@ module traffic_sign(icon, main, sub) {
     translate([0, sign_size / 4, sign_thickness + 1]) { // Ensure proper placement above base
         color("white") {
             linear_extrude(height = 2) {
-                text(icon, valign="center", halign="center", size = max_text_width / 4, spacing = 1, font="Liberation Sans"); // Explicit font for better rendering
+                text(icon, valign="center", halign="center", size = max_text_width / 4, spacing = 1, font="DejaVu Sans"); // Use a font that supports ☢
             }
         }
     }
