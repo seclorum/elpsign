@@ -1,8 +1,8 @@
 // OpenSCAD script to create a square traffic sign tilted like a "give way" sign
 // Parameters to customize the sign
 icon_text = "☢"; // The icon for the top third
-main_text = ["EMBRACE", "LITERAL", "PLASTICITY"]; // The main raised text (one word per line)
-sub_text = "Because Rocks Don't Live"; // The smaller raised text at the bottom
+main_text = ["Legalize", "Recreational", "Plutonium"]; // The main raised text (one word per line)
+sub_text = "FOR A LOT BRIGHTER TOMORROW"; // The smaller raised text at the bottom
 
 module traffic_sign(icon, main, sub) {
     sign_size = 120; // The side length of the square
