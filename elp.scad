@@ -1,0 +1,55 @@
+// OpenSCAD script to create a square traffic sign tilted like a "give way" sign
+// Parameters to customize the sign
+icon_text = "*"; // The icon for the top third
+main_text = "Embrace Literal Plasticity"; // The main raised text
+sub_text = "Or live like a rock."; // The smaller raised text at the bottom
+
+module traffic_sign(icon, main, sub) {
+    sign_size = 120; // The side length of the square
+    sign_thickness = 5;
+
+    // Draw the tilted square base
+    color("red") {
+        rotate([0, 0, 45]) {
+            linear_extrude(height = sign_thickness) {
+                square([sign_size, sign_size], center = true);
+            }
+        }
+    }
+
+    // Calculate text scaling to fit within the sign
+    text_margin = 10;
+    max_text_width = sign_size - 2 * text_margin;
+
+    // Add the icon to the top third
+    translate([0, sign_size / 4, sign_thickness]) {
+        color("white") {
+            linear_extrude(height = 2) {
+                text(icon, valign="center", halign="center", size = max_text_width / 4, spacing = 1);
+            }
+        }
+    }
+
+    // Add the main text to the middle
+    translate([0, 0, sign_thickness]) {
+        color("white") {
+            linear_extrude(height = 2) {
+                text(main, valign="center", halign="center", size = max_text_width / (len(main) / 2 + 1), spacing = 1);
+            }
+        }
+    }
+
+    // Add the subtext to the bottom third
+    translate([0, -sign_size / 4, sign_thickness]) {
+        color("white") {
+            linear_extrude(height = 2) {
+                text(sub, valign="center", halign="center", size = max_text_width / (len(sub) + 2), spacing = 1);
+            }
+        }
+    }
+}
+
+// Generate the sign with the specified texts
+traffic_sign(icon_text, main_text, sub_text);
+
+
