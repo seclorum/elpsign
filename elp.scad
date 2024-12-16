@@ -1,30 +1,37 @@
 // OpenSCAD script to create a square traffic sign tilted like a "give way" sign
 // Parameters to customize the sign
 icon_text = "☢"; // The icon for the top third
-main_text = ["Legalize", "Recreational", "Plutonium"]; // The main raised text (one word per line)
-sub_text = "FOR A LOT BRIGHTER TOMORROW"; // The smaller raised text at the bottom
+main_text = ["Embrace", "Literal", "Plasticity"]; // The main raised text (one word per line)
+sub_text = "FOR A MORE FLUID TOMORROW"; // The smaller raised text at the bottom
 
 module traffic_sign(icon, main, sub) {
     sign_size = 120; // The side length of the square
     sign_thickness = 5;
     border_thickness = 3; // Thickness of the border
+    corner_radius = 15; // Radius for rounded corners
 
-    // Draw the tilted square base
+    // Draw the tilted square base with rounded corners
     color("red") {
         rotate([0, 0, 45]) {
             linear_extrude(height = sign_thickness) {
-                square([sign_size, sign_size], center = true);
+                offset(r = corner_radius) {
+                    square([sign_size, sign_size], center = true);
+                }
             }
         }
     }
 
-    // Add a border around the sign
+    // Add a border around the sign with rounded corners
     color("white") {
         rotate([0, 0, 45]) {
             linear_extrude(height = sign_thickness + 0.1) {
                 difference() {
-                    square([sign_size + border_thickness * 2, sign_size + border_thickness * 2], center = true);
-                    square([sign_size, sign_size], center = true);
+                    offset(r = corner_radius) {
+                        square([sign_size + border_thickness * 2, sign_size + border_thickness * 2], center = true);
+                    }
+                    offset(r = corner_radius) {
+                        square([sign_size, sign_size], center = true);
+                    }
                 }
             }
         }
